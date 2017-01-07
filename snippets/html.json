@@ -1,38 +1,268 @@
 {
-/*
-	 // Place your snippets for HTML here. Each snippet is defined under a snippet name and has a prefix, body and 
-	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	 // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	 // same ids are connected.
-	 // Example:
-	 "Print to console": {
-		"prefix": "log",
-		"body": [
-			"console.log('$1');",
-			"$2"
-		],
-		"description": "Log output to console"
-	}
-*/
-"Hubl Text": {
-		"prefix": "hubt",
-		"body": [
-			"{% text '$1' label='$2', value='$3' no_wrapper=true %}"
-		],
-		"description": "basic hubl text element"
-	},
-	"Rich Text": {
-		"prefix": "hubrt",
-		"body": [
-			"{% rich_text '$1' label='$2' html='$3' %}"
-		],
-		"description": "basic hubl text element"
-	},
-	"Image Src": {
-		"prefix": "hubimgsrc",
-		"body": [
-			"{% image_src '$1' src='$2', no_wrapper=True %}"
-		],
-		"description": "basic hubl text element"
-	}
+  "Blog Comments": {
+    "prefix": "hubbc",
+    "body": [
+      "{% blog_comments '$1' overrideable=$2, label='$3' select_blog='$4' %}"
+    ],
+    "description": "A blog comments module renders the comments embed code on a blog template. This Javascript embed code loads the comments form and comments, based upon your configuration in Content  Settings. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#blog-comments"
+  },
+  "Blog Social Sharing": {
+    "prefix": "hubbss",
+    "body": [
+      "{% blog_social_sharing '$1' select_blog='$2' %}"
+    ],
+    "description": "Blog social sharing renders share counters on your blog posts (if enabled in Content Settings) Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#blog-social-sharing "
+  },
+  "Blog Subscription": {
+    "prefix": "hubbs",
+    "body": [
+      "{% blog_subscribe '$1' select_blog='$2', title='$3', response_message='$4', label='$5', overrideable=$6 %}"
+    ],
+    "description": "A blog subscription module renders the blog subscriber form for a particular blog. This form is automatically created whenever a blog is created in Content Settings, and there is always one subscription form per blog. Please note that the subscribe form's fields are configured within the Forms editor UI. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#blog-subscription "
+  },
+  "Boolean": {
+    "prefix": "hubbool",
+    "body": [
+      "{% boolean '$1' label='$2', value=$3, no_wrapper=$4 %}"
+    ],
+    "description": "A boolean module creates a checkbox in the UI that prints true or false. In addition to printing the value, this module is useful for defining conditional template logic, when combined with the parameter export_to_template_context.  Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#boolean "
+  },
+  "Choice": {
+    "prefix": "hubch",
+    "body": [
+      "{% choice '$1' label='$2', value='$3', choices='$4' %}"
+    ],
+    "description": " A choice module creates a dropdown in the content editor UI that prints the value selected by the user. Choice modules are great for giving your users a preset set of options, such as printing the type of page as a page header. In addition to printing the choice value, this module is useful for defining conditional template logic, when combined with the parameter export_to_template_context. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#choice "
+  },
+  "Color": {
+    "prefix": "hubclr",
+    "body": [
+      "{% color '$1' label='$2', color='$3', no_wrapper=$4 %}"
+    ],
+    "description": " The color module generates a color picker in the page editor UI that prints a HEX color value to a template. Please note that this module can only be used in templates, not CSS files.  If using this tag in a <style> or inline CSS, you will want to use the no_wrapper=True parameter to remove the wrapper <span> wrapper. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#color "
+  },
+  "CTA": {
+    "prefix": "hubcta",
+    "body": [
+      "{% cta '$1' label='$2', guid='$3', image_src='$4' %}"
+    ],
+    "description": "A Call to Action or CTA module allows users to add a HubSpot Call to Action button to a predefined area of a page. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#cta "
+  },
+  "Custom HTML": {
+    "prefix": "hubhtml",
+    "body": [
+      "{% raw_html '$1' label='$2' value='$3' %}"
+    ],
+    "description": "A custom HTML module allows users to enter raw HTML into the content editor. If you need to add extensive default HTML to the module, you may want to use block syntax Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#custom-html"
+  },
+  "Custom Modules": {
+    "prefix": "hubcmod",
+    "body": [
+      "{% custom_widget '$1' widget_name='$2', label='$3' %}"
+    ],
+    "description": "Custom Modules allow HubSpot designers to create a custom group of editable content objects to be used across templates and pages on HubSpot’s COS, while still allowing marketers to control the specific content appearing within those modules on a page-by-page basis. Custom modules must be built in the Custom Module editor, but they can be included into coded templates and HubL modules. Custom modules require two parameters in order to specify which module to load. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#custom-modules"
+  },
+  "Email Backup Unsubscribe": {
+    "prefix": "hubeunsub",
+    "body": [
+      "{% email_simple_subscription '$1' header='$2', input_help_text='$3', input_placeholder='$4', button_text='$5', label='$6' %}"
+    ],
+    "description": "The backup unsubscribe module renders for email recipients, if HubSpot is unable to determine their email address, when that recipient tries to unsubscribe. This module renders a form for the contact to enter his or her email address to unsubscribe from email communications. It should be used on an Unsubscribe Backup system template. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#email-backup-unsubscribe"
+  },
+  "Email Subscriptions": {
+    "prefix": "hubesub",
+    "body": [
+      "{% email_subscriptions '$1' resubscribe_button_text='$2', unsubscribe_single_text='$3', subheader_text='$4', unsubscribe_all_unsubbed_text='$5', button_text='$6', label='$7', header='$8', unsubscribe_all_option='$9', unsubscribe_all_text='$10' %}"
+    ],
+    "description": "This module renders when an email recipient goes to edit his or her subscription preferences. It should be used on a Subscription Preference system template. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#email-subscriptions"
+  },
+  "Email Subscriptions Confirmations": {
+    "prefix": "hubesubcon",
+    "body": [
+      "{% email_subscriptions_confirmation '$1' label='$2', unsubscribe_all_success='$3', subscription_update_success='$4', subheader_text='$5' %}"
+    ],
+    "description": "The email subscriptions update confirmation is a module that can be added to the thank you template for when a recipient updates his or her subscription preferences or unsubscribes. It should be used on a Subscription Update system template. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#email-subscriptions-confirmation"
+  },
+  "Flexible column": {
+    "prefix": "hubflexcol",
+    "body": [
+      "{% widget_container '$1' %}$2{% end_widget_container %}"
+    ],
+    "description": "Flexible columns are vertical columns in a template that allow the end user to insert and remove a variety of modules of their choosing into the template, while editing in the content editor. When coding a flexible column with HubL, you can choose to wrap other HubL modules to make them appear in the flexible column by default. The sample code below shows the basic syntax and an sample flex column with a rich-text and form module contained as default content. Please note that flexible columns can only be added to page templates, not blog or email templates. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#flexible-column"
+  },
+  "Follow Me": {
+    "prefix": "hubflexcol",
+    "body": [
+      "{% follow_me '$1' title='$2', module_title_tag='$3' %}"
+    ],
+    "description": "Follow me modules render icons that link to your various social media profiles. The icons that display are based upon your Social Settings. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#follow-me"
+  },
+  "Form": {
+    "prefix": "hubform",
+    "body": [
+      "{% form '$1' form_to_use='$2', title='$3' %}"
+    ],
+    "description": "Allows users to select a HubSpot form to add to their page. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#form"
+  },
+  "Gallery": {
+    "prefix": "hubgal",
+    "body": [
+      "{% gallery '$1' %}"
+    ],
+    "description": "Generates a HubSpot gallery module. This gallery module is based on Slick. While you can create a gallery module with standard module HubL syntax, If you want to predefine default slides using HubL, you must use block syntax. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#gallery"
+  },
+  "Global Module": {
+    "prefix": "hubgmod",
+    "body": [
+      "{% page_footer $1 %}"
+    ],
+    "description": "Add a predefined global module to coded template or HubL module. Global modules are created using the drag and drop template builder UI. Please note that using a global module tag is different than including an html file or global group, in a template. The global module is associated with the HubL tag based on its unique name. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#global-module"
+  },
+  "Footer": {
+    "prefix": "hubfooter",
+    "body": [
+      "{% global_widget '$1' overrideable='$2', label='$3' %}"
+    ],
+    "description": "Renders copyright information with the year and company name specifed in Content Settings (Email > Footer Information) Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#footer"
+  },
+  "Google Search": {
+    "prefix": "hubgsearch",
+    "body": [
+      "{% google_search '$1' label='$2', prefill_input_with_pathname=$3, search_field_label='$4', search_button_text='$5' %}"
+    ],
+    "description": "This module creates a search field that redirects to a Google page of search results for your site. If you want to redirect to a search results page hosted on your site, you would need to set up a Custom Search Engine with Google or use a third-party search provider like Swiftype. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#google-search"
+  },
+  "Header": {
+    "prefix": "hubheader",
+    "body": [
+      "{% header '$1' header_tag='$2', overrideable=$3, value='$4', label='$5' %}"
+    ],
+    "description": "Generates a header module that will render text as an h1-h6 tag. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#header"
+  },
+  "Image": {
+    "prefix": "hubimg",
+    "body": [
+      "{% image '$1' label='$2', alt='$3', src='$4', width='$5' %}"
+    ],
+    "description": "Creates a image module that allows users to select an image from the content editor. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#image"
+  },
+  "Image Src": {
+    "prefix": "hubimgsrc",
+    "body": [
+      "{% image_src '$1' src='$2', no_wrapper=$3 %}"
+    ],
+    "description": "An image src module creates a image selector in the content editor, but rather than printing a img tag, it renders the URL of the image. This tag is generally used with no_wrapper=True parameter, so that the image src can be added to inline CSS or other markup. An alternative to using this tag is to use the export_to_template_context parameter. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#image-src"
+  },
+  "Linked Image": {
+    "prefix": "hublinkimg",
+    "body": [
+      "{% linked_image '$1' label='$2', link='$3', open_in_new_tab=$4, alt='$5', src='$6', width='$7' %}"
+    ],
+    "description": "Creates a user-selectable image that is wrapped in a link. This module has all of the parameters of an image module with two additional parameters that specify the link destination URL and whether the link opens in a new window. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#linked-image"
+  },
+  "Logo": {
+    "prefix": "hublogo",
+    "body": [
+      "{% logo '$1' width='$2' %}"
+    ],
+    "description": "A logo module renders your company's logo image from Content Settings. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#logo"
+  },
+  "Menu": {
+    "prefix": "hubmenu",
+    "body": [
+      "{% menu '$1' site_map_name='$2', overrideable=$3, root_type='$4', flyouts='$5', max_levels='$6', flow='$7', label='$8' %}"
+    ],
+    "description": "Generates an advanced menu based on a menu tree in Content Settings > Advanced Menus. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#menu"
+  },
+  "Password Prompt": {
+    "prefix": "hubpassp",
+    "body": [
+      "{% password_prompt '$1' submit_button_text='$2', bad_password_message='$3', label='$4' %}"
+    ],
+    "description": "Adds a password prompt to password-protected pages. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#password-prompt"
+  },
+  "Post Filter": {
+    "prefix": "hubpostfil",
+    "body": [
+      "{% post_filter '$1' select_blog='$2', expand_link_text='$3', overrideable=$4, list_title='$5', max_links=$6, filter_type='$7', label='$8' %}"
+    ],
+    "description": "Creates a linked listing of posts by topic, posts by month, or posts by author. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#post-filter"
+  },
+  "Post Listing": {
+    "prefix": "hubpostlist",
+    "body": [
+      "{% post_listing '$1' select_blog='$2', label='$3', overrideable=$4, list_title='$5', listing_type='$6', max_links=$7 %}"
+    ],
+    "description": "Adds a listing of most popular or top posts. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#post-listing"
+  },
+  "Require_css": {
+    "prefix": "hubreqcss",
+    "body": [
+      "{% require_css %}<style>$1</style>{% end_require_css %}"
+    ],
+    "description": "A HubL tag that enqueues an inline style to be rendered. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#require-css"
+  },
+  "Require_js": {
+    "prefix": "hubreqjs",
+    "body": [
+      "{% require_js position='footer'%}<script>$1</script>{% end_require_js %}"
+    ],
+    "description": "A HubL tag that enqueues an inline script to be rendered. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#require-js"
+  },
+  "Rich Text": {
+    "prefix": "hubrt",
+    "body": [
+      "{% rich_text '$1' label='$2' html='$3' %}"
+    ],
+    "description": "Creates a WYSIWYG content editor. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#rich-text"
+  },
+  "RSS listing": {
+    "prefix": "hubrsslist",
+    "body": [
+      "{% rss_listing '$1' rss_url='$2', publish_date_text='$3', feed_source={rss_url='$4', is_external=$5, content_group_id='$6'}, click_through_text='$7', show_date=$8, include_featured_image=$9, overrideable=$10, publish_date_format='$11', show_detail=$12, show_author=$13, number_of_items='$14', is_external=$15, title='$16', content_group_id='$17', label='$18', limit_to_chars='$19', attribution_text='$20' %}"
+    ],
+    "description": "Loads a list of content from an internal or external RSS feed. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#rss-listing"
+  },
+  "Section Header": {
+    "prefix": "hubsech",
+    "body": [
+      "{% section_header $1 subheader='$2', header='$3', label='$4'  %}"
+    ],
+    "description": "Generates an h1 header and <p> subheader. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#section-header"
+  },
+  "Simple Menu": {
+    "prefix": "hubsmenu",
+    "body": [
+      "{% simple_menu $1 orientation='$2', label='$3' %}"
+    ],
+    "description": "Simple menus allow you to create basic navigation menus that can be modified at the page level. Unlike regular menu modules, simple menus are not managed from the Advanced Menus screen in Content Settings, but rather from the template and page editors. You can use block syntax to set up a default menu tree. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#simple-menu"
+  },
+  "Social Sharing": {
+    "prefix": "hubsocs",
+    "body": [
+      "{% social_sharing $1 use_page_url=$2 %}"
+    ],
+    "description": "Social sharing modules generate social media icons that can be used to share a particular page. This module can be used with block syntax to customize the icon images and more. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#social-sharing"
+  },
+  "Spacer": {
+    "prefix": "hubspacer",
+    "body": [
+      "{% space '$1' label='$2' %}"
+    ],
+    "description": "A spacer module generates an empty span tag. This tag can be styled to act as a spacer. In drag and drop layouts, the spacer module is wrapped in a container with a class of span1-span12 to determine how much space the module should take up in the twelve column responsive grid. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#spacer"
+  },
+  "Text": {
+    "prefix": "hubt",
+    "body": [
+      "{% text '$1' label='$2', value='$3' no_wrapper=$4 %}"
+    ],
+    "description": "Creates a single line of text. This module can be useful to be mixed into your markup, when used in conjunction with the no_wrapper=True parameter. For example, if you wanted your end users to be able to define a destination of a predefined anchor, you could populate the href with a text module with no_wrapper=True. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#text"
+  },
+  "Textarea": {
+    "prefix": "hubta",
+    "body": [
+      "{% textarea '$1' label='$2', value='$3', no_wrapper=$4 %}"
+    ],
+    "description": "A textarea is similar to a text module in that it allows users to enter plain text, but it gives them a larger area to work in the content editor. This module does not support HTML. If you want to use directly within a predefined wrapping tag,  add the no_wrapper=true parameter. Documentation: http://designers.hubspot.com/docs/hubl/hubl-supported-modules#textarea"
+  }
 }
