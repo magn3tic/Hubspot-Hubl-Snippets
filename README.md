@@ -42,7 +42,7 @@ We currently support the following all Hubl modules. More information here: http
 
 #### [Docs](http://designers.hubspot.com/docs/hubl/hubl-supported-modules#color)
 
-#### Description: The color module generates a color picker in the page editor UI that prints a HEX color value to a template. Please note that this module can only be used in templates, not CSS files.  If using this tag in a <style> or inline CSS, you will want to use the no_wrapper=True parameter to remove the wrapper <span> wrapper.
+#### Description: The color module generates a color picker in the page editor UI that prints a HEX color value to a template. Please note that this module can only be used in templates, not CSS files.  If using this tag in a `<style>` or inline CSS, you will want to use the `no_wrapper=True` parameter to remove the wrapper `<span>` wrapper.
 
 ## CTA - hubcta
 
