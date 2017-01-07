@@ -32,7 +32,7 @@ We currently support the following all Hubl modules. More information here: http
 
 #### Description: A boolean module creates a checkbox in the UI that prints "true" or "false." In addition to printing the value, this module is useful for defining conditional template logic, when combined with the parameter export_to_template_context. 
 
-# Choice - hubch
+## Choice - hubch
 
 #### [Docs](http://designers.hubspot.com/docs/hubl/hubl-supported-modules#choice)
 
