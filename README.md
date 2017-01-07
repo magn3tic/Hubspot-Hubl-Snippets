@@ -1,13 +1,10 @@
-# hubspot-hubl-snippets README
+# hubspot-hubl-snippets
 
 We created this extension for a better Hubspot developer experience.
 
 ## Features
 
-We currently support the following Hubl modules:
-1. Rich Text
-2. Text
-3. Image Src
+We currently support the following all Hubl modules. More information here: http://designers.hubspot.com/docs/hubl/hubl-supported-modules
 
 ## Known Issues
 
@@ -15,7 +12,7 @@ None currently
 
 ## Release Notes
 
-None.
+Version 0.0.2 now features full support for Hubl Modules.
 
 -----------------------------------------------------------------------------------------------------------
 

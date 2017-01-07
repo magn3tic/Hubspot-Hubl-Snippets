@@ -2,7 +2,7 @@
     "name": "hubspot-hubl-snippets",
     "displayName": "Hubspot-Hubl-Snippets",
     "description": "A Hubspot Hubl Snippet Library",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "maglabs",
     "engines": {
         "vscode": "^1.5.0"
