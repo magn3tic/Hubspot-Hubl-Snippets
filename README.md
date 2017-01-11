@@ -4,7 +4,7 @@ We created this extension for a better Hubspot developer experience.
 
 ## Features
 
-We currently support the following all Hubl modules. More information here: http://designers.hubspot.com/docs/hubl/hubl-supported-modules
+We currently support all Hubl modules. More information here: http://designers.hubspot.com/docs/hubl/hubl-supported-modules
 
 ## Supported Modules
 
